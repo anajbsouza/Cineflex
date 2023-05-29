@@ -1,15 +1,34 @@
 import styled from "styled-components";
+import axios from "axios";
 import Footer from "../../components/Footer";
 import Seat from "../../components/Seat";
+import { BASE_URL } from "../../constants/urls";
+import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 
 export default function SeatsPage() {
+
+    const { idSessao } = useParams();
+
+    const [filmes, setFilmes] = useState(undefined);
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/showtimes/${idSessao}/seats`)
+        .then(resposta => setFilmes(resposta.data))
+        .catch((erro) => console.log(erro.response.data))
+    }, []);
+
+    if(filmes === undefined) {
+		return <div>Carregando...</div>;
+	}
 
     return (
         <PageContainer>
             Selecione o(s) assento(s)
 
             <SeatsContainer>
-                <Seat />
+                {filmes.seats.map((s) => <Seat seat={s} />)}
+                
             </SeatsContainer>
 
             <CaptionContainer>

@@ -1,15 +1,33 @@
 import styled from "styled-components";
+import axios from "axios";
 import SessionCard from "../../components/SessionCard";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { BASE_URL } from "../../constants/urls";
+import Footer from "../../components/Footer";
 
 export default function SessionsPage() {
+    const { idFilme } = useParams();
+
+    const [filmes, setFilmes] = useState(undefined);
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/movies/${idFilme}/showtimes`)
+        .then(resposta => setFilmes(resposta.data))
+        .catch((erro) => console.log(erro.response.data))
+    }, []);
+
+    if(filmes === undefined) {
+		return <div>Carregando...</div>;
+	}
 
     return (
         <PageContainer>
             Selecione o horário
             <div>
-                <SessionCard />
+                {filmes.days.map((s) => <SessionCard key={s.id} days={s}/>)}
             </div>
-
+            <Footer posterURL={filmes.posterURL} title={filmes.title}/>
         </PageContainer>
     )
 }

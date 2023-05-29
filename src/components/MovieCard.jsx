@@ -1,33 +1,15 @@
-import React from 'react'
+import React from 'react';
+import styled from "styled-components";
 
-export default function MovieCard() {
+export default function MovieCard({ filmes }) {
+    const { posterURL, title, id } = filmes;
     return (
-        <ListContainer>
-            {filmes.map((filme) => (
-                <MovieContainer key={filme.id}>
-                    <img src={filme.posterURL} alt={filme.title}/>
-                </MovieContainer>   
-            ))}
-            
-            {/* <ListContainer>
-                {filmes.map((filme) => (
-                    <MovieContainer key={filme.id}>
-                        {filmes ? (<img src={filme.posterURL} alt={filme.title}/>) : ("Carregando filmes...")}
-                    </MovieContainer>   
-                ))}
-            </ListContainer> */}
-
-        </ListContainer>
+        <MovieContainer key={id}>
+            <img src={posterURL} alt={title}/>
+        </MovieContainer>   
     )
 }
 
-const ListContainer = styled.div`
-    width: 330px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    padding: 10px;
-`
 const MovieContainer = styled.div`
     width: 145px;
     height: 210px;
