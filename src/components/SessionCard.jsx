@@ -9,7 +9,7 @@ export default function SessionCard({ days }) {
             <div data-test="movie-day">{weekday} - {date}</div>
             <ButtonsContainer>
             {showtimes.map(({ id, name: hour }) => (
-                <Link to={`/assentos/${id}`} key={id} data-test="showtime">
+                <Link to={`/assentos/${id}`} key={id}>
                     <button data-test="showtime">{hour}</button>
                 </Link>
             ))}
