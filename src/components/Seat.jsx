@@ -1,15 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import seatColors from '../constants/colors';
 
-export default function Seat() {
+export default function Seat({ seat, selectSeat, isSelected }) {
+    const [status, setStatus] = useState("available");
+    const { id, isAvailable, name } = seat;
+
+    useEffect(() => {
+        if (isSelected) {
+            setStatus("selected")
+        } else if (isAvailable) {
+            setStatus("available")
+        } else {
+            setStatus("unavailable")
+        }
+    }, [isSelected])
+
+
     return (
-        <SeatItem>01</SeatItem>
+        <SeatItem data-test="seat" onClick={selectSeat} status={status}>{name}</SeatItem>
     )
 }
 
 const SeatItem = styled.div`
-    border: 1px solid blue;         // Essa cor deve mudar
-    background-color: lightblue;    // Essa cor deve mudar
+    border: 1px solid ${(props) => seatColors[props.status].border};   
+    background-color: ${(props) => seatColors[props.status].background};
     height: 25px;
     width: 25px;
     border-radius: 25px;
