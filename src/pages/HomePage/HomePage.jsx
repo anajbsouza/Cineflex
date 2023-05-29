@@ -25,7 +25,7 @@ export default function HomePage() {
 
             <ListContainer>
                 {filmes.map((f) => (
-                    <Link to={`/sessoes/${f.id}`} key={f.id} data-test="movie">
+                    <Link to={`/sessoes/${f.id}`} key={f.id}>
                         <MovieCard filmes={f} />   
                     </Link>
                 ))}
