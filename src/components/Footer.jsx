@@ -5,7 +5,7 @@ export default function Footer({posterURL, title, weekday, hour}) {
     return (
         <FooterContainer>
             <div>
-                <img src={posterURL} alt={title} />
+                <img src={posterURL} alt={title} data-test="footer" />
             </div>
             <div>
                 <p>{title}</p>

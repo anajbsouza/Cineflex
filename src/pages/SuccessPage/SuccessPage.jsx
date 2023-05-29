@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function SuccessPage({ successInfo }) {
 
-    const { movie, date, hour, buyer, cpf, seats } = successInfo
+    const { movie, date, hour, buyer, cpf, seats } = successInfo;
 
     return (
         <PageContainer>
@@ -17,7 +17,11 @@ export default function SuccessPage({ successInfo }) {
 
             <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
-                {seats.map(s => <p>Assento {s}</p>)}
+                {seats.map((s) => {
+                    <p key={seats.id}>
+                        Assento {s}
+                    </p>
+                })}
             </TextContainer>
 
             <TextContainer data-test="client-info">
@@ -27,7 +31,7 @@ export default function SuccessPage({ successInfo }) {
             </TextContainer>
 
             <Link to="/" data-test="go-home-btn">
-                <button>Voltar para Home</button>
+                <button data-test="go-home-btn">Voltar para Home</button>
             </Link>
         </PageContainer>
     )

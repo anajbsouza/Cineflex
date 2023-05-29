@@ -5,7 +5,7 @@ export default function MovieCard({ filmes }) {
     const { posterURL, title, id } = filmes;
     return (
         <MovieContainer key={id}>
-            <img src={posterURL} alt={title}/>
+            <img src={posterURL} alt={title} data-test="movie" />
         </MovieContainer>   
     )
 }

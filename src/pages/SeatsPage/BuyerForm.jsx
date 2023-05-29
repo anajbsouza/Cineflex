@@ -71,7 +71,7 @@ export default function BuyerForm({ selectedSeats, setSuccessInfo, session }) {
                 data-test="client-cpf"
             />
 
-            <button type="submit">Reservar Assento(s)</button>
+            <button type="submit" data-test="book-seat-btn">Reservar Assento(s)</button>
         </FormContainer>
     )
 }
