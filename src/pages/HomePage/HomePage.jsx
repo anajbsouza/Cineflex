@@ -1,16 +1,15 @@
 import styled from "styled-components";
 import axios from "axios";
 import { useState, useEffect } from 'react';
-import { BASE_URL } from "../../constants/urls";
 import { Link } from "react-router-dom";
 import MovieCard from "../../components/MovieCard";
 
 export default function HomePage() {
-    
+    const apiKey = import.meta.env.VITE_API_KEY;
     const [filmes, setFilmes] = useState(undefined);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/movies`)
+        axios.get(`${apiKey}/movies`)
         .then(resposta => setFilmes(resposta.data))
         .catch((erro) => console.log(erro.response.data))
     }, []);

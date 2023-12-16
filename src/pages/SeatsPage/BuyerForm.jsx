@@ -2,11 +2,10 @@ import React from 'react';
 import styled from "styled-components";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../../constants/urls';
 import axios from "axios";
 
 export default function BuyerForm({ selectedSeats, setSuccessInfo, session }) {
-
+    const apiKey = import.meta.env.VITE_API_KEY;
     const [form, setForm] = useState({ name: "", cpf: "" });
     const [disableButton, setDisableButton] = useState(true);
 
@@ -30,7 +29,7 @@ export default function BuyerForm({ selectedSeats, setSuccessInfo, session }) {
         const ids = selectedSeats.map((s) => s.id);
         const body = {...form, ids};
 
-        axios.post(`${BASE_URL}/seats/book-many`, body)
+        axios.post(`${apiKey}/seats/book-many`, body)
             .then(resposta => {
                 const info = {
                     movie: session.movie.title,

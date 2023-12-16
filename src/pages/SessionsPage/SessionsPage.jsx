@@ -3,16 +3,15 @@ import axios from "axios";
 import SessionCard from "../../components/SessionCard";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { BASE_URL } from "../../constants/urls";
 import Footer from "../../components/Footer";
 
 export default function SessionsPage() {
+    const apiKey = import.meta.env.VITE_API_KEY;
     const { idFilme } = useParams();
-
     const [filmes, setFilmes] = useState(undefined);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/movies/${idFilme}/showtimes`)
+        axios.get(`${apiKey}/movies/${idFilme}/showtimes`)
         .then(resposta => setFilmes(resposta.data))
         .catch((erro) => console.log(erro.response.data))
     }, []);

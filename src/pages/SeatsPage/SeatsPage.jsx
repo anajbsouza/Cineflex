@@ -2,21 +2,20 @@ import styled from "styled-components";
 import axios from "axios";
 import Footer from "../../components/Footer";
 import Seat from "../../components/Seat";
-import { BASE_URL } from "../../constants/urls";
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import Caption from "./Caption";
 import BuyerForm from "./BuyerForm";
 
 export default function SeatsPage({ setSuccessInfo }) {
-
+    const apiKey = import.meta.env.VITE_API_KEY;
     const { idSessao } = useParams();
 
     const [session, setSession] = useState(undefined);
     const [selectedSeats, setSelectedSeats] = useState([]);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/showtimes/${idSessao}/seats`)
+        axios.get(`${apiKey}/showtimes/${idSessao}/seats`)
         .then(resposta => setSession(resposta.data))
         .catch((erro) => console.log(erro.response.data))
     }, []);
