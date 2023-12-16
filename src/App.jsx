@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import HomePage from "./pages/HomePage/HomePage";
 import SeatsPage from "./pages/SeatsPage/SeatsPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage";
@@ -11,17 +10,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 export default function App() {
     
     axios.defaults.headers.common['Authorization'] = 'wpLLQQ7GfvOlpZSwtSkjcon6';
-    const [successInfo, setSuccessInfo] = useState({})
+    const [buyerInfo, setBuyerInfo] = useState({})
 
     return (
         <BrowserRouter>
             <NavBar />
-            
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
-                <Route path="/assentos/:idSessao" element={<SeatsPage setSuccessInfo={setSuccessInfo}/>} />
-                <Route path="/sucesso" element={<SuccessPage successInfo={successInfo}/>} />
+                <Route path="/assentos/:idSessao" element={<SeatsPage setBuyerInfo={setBuyerInfo}/>} />
+                <Route path="/sucesso" element={<SuccessPage buyerInfo={buyerInfo}/>} />
             </Routes>
         </BrowserRouter>
     )

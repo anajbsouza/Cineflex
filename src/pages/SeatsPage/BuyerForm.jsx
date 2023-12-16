@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-export default function BuyerForm({ selectedSeats, setSuccessInfo, session }) {
+export default function BuyerForm({ selectedSeats, setBuyerInfo, session }) {
     const apiKey = import.meta.env.VITE_API_KEY;
     const [form, setForm] = useState({ name: "", cpf: "" });
     const [disableButton, setDisableButton] = useState(true);
@@ -30,7 +30,7 @@ export default function BuyerForm({ selectedSeats, setSuccessInfo, session }) {
         const body = {...form, ids};
 
         axios.post(`${apiKey}/seats/book-many`, body)
-            .then(resposta => {
+            .then(result => {
                 const info = {
                     movie: session.movie.title,
                     date: session.day.date,
@@ -39,10 +39,10 @@ export default function BuyerForm({ selectedSeats, setSuccessInfo, session }) {
                     cpf: form.cpf,
                     seats: selectedSeats.map((s) => s.name)
                 }
-                setSuccessInfo(info);
+                setBuyerInfo(info);
                 navigate("/sucesso")
             })
-            .catch(erro => alert(erro.response.data.message))
+            .catch(err => alert(err.response.data.message))
 
     }
 

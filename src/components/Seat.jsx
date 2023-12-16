@@ -18,11 +18,11 @@ export default function Seat({ seat, selectSeat, isSelected }) {
 
 
     return (
-        <SeatItem data-test="seat" onClick={selectSeat} status={status}>{name}</SeatItem>
+        <SeatSelection data-test="seat" onClick={selectSeat} status={status}>{name}</SeatSelection>
     )
 }
 
-const SeatItem = styled.div`
+const SeatSelection = styled.div`
     border: 1px solid ${(props) => seatColors[props.status].border};   
     background-color: ${(props) => seatColors[props.status].background};
     height: 25px;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import seatColors from '../../constants/colors';
 
-export default function Caption() {
+export default function SeatCaption() {
     return (
         <CaptionContainer>
             <CaptionItem>

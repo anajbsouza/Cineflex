@@ -30,4 +30,5 @@ Para executar este projeto em desenvolvimento, é necessário seguir os passos a
 
 - Clonar o repositório;
 - Baixar as dependências necessárias com o comando: `npm install`;
+- Em seguida, criar o arquivo `.env` com base no `.env.example`;
 - Para rodar o projeto em desenvolvimento, execute o comando `npm run dev`;

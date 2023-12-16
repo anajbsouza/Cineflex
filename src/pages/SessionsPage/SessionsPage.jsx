@@ -7,16 +7,16 @@ import Footer from "../../components/Footer";
 
 export default function SessionsPage() {
     const apiKey = import.meta.env.VITE_API_KEY;
-    const { idFilme } = useParams();
-    const [filmes, setFilmes] = useState(undefined);
+    const { idMovie } = useParams();
+    const [movies, setMovies] = useState(undefined);
 
     useEffect(() => {
-        axios.get(`${apiKey}/movies/${idFilme}/showtimes`)
-        .then(resposta => setFilmes(resposta.data))
-        .catch((erro) => console.log(erro.response.data))
+        axios.get(`${apiKey}/movies/${idMovie}/showtimes`)
+        .then(result => setMovies(result.data))
+        .catch((err) => console.log(err.response.data))
     }, []);
 
-    if(filmes === undefined) {
+    if(movies === undefined) {
 		return <div>Carregando...</div>;
 	}
 
@@ -24,9 +24,9 @@ export default function SessionsPage() {
         <PageContainer>
             Selecione o horário
             <div>
-                {filmes.days.map((s) => <SessionCard key={s.id} days={s}/>)}
+                {movies.days.map((s) => <SessionCard key={s.id} days={s}/>)}
             </div>
-            <Footer posterURL={filmes.posterURL} title={filmes.title}/>
+            <Footer posterURL={movies.posterURL} title={movies.title}/>
         </PageContainer>
     )
 }

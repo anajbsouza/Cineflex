@@ -6,15 +6,15 @@ import MovieCard from "../../components/MovieCard";
 
 export default function HomePage() {
     const apiKey = import.meta.env.VITE_API_KEY;
-    const [filmes, setFilmes] = useState(undefined);
+    const [movies, setMovies] = useState(undefined);
 
     useEffect(() => {
         axios.get(`${apiKey}/movies`)
-        .then(resposta => setFilmes(resposta.data))
-        .catch((erro) => console.log(erro.response.data))
+        .then(result => setMovies(result.data))
+        .catch((err) => console.log(err.response.data))
     }, []);
 
-    if(filmes === undefined) {
+    if(movies === undefined) {
 		return <div>Carregando...</div>;
 	}
 
@@ -23,9 +23,9 @@ export default function HomePage() {
             Selecione o filme
 
             <ListContainer>
-                {filmes.map((f) => (
+                {movies.map((f) => (
                     <Link to={`/sessoes/${f.id}`} key={f.id}>
-                        <MovieCard filmes={f} />   
+                        <MovieCard movies={f} />   
                     </Link>
                 ))}
                 

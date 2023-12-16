@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default function SuccessPage({ successInfo }) {
+export default function SuccessPage({ buyerInfo }) {
 
-    const { movie, date, hour, buyer, cpf, seats } = successInfo;
+    const { movie, date, hour, buyer, cpf, seats } = buyerInfo;
 
     return (
         <PageContainer>
