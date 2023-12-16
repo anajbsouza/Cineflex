@@ -42,8 +42,7 @@ export default function BuyerForm({ selectedSeats, setBuyerInfo, session }) {
                 setBuyerInfo(info);
                 navigate("/sucesso")
             })
-            .catch(err => alert(err.response.data.message))
-
+            .catch(err => alert(err.response.data.message));
     }
 
     return (

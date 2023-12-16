@@ -4,7 +4,7 @@ import seatColors from '../constants/colors';
 
 export default function Seat({ seat, selectSeat, isSelected }) {
     const [status, setStatus] = useState("available");
-    const { id, isAvailable, name } = seat;
+    const { isAvailable, name } = seat;
 
     useEffect(() => {
         if (isSelected) {

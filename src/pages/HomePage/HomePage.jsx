@@ -21,17 +21,13 @@ export default function HomePage() {
     return (
         <PageContainer>
             Selecione o filme
-
             <ListContainer>
                 {movies.map((f) => (
                     <Link to={`/sessoes/${f.id}`} key={f.id}>
                         <MovieCard movies={f} />   
                     </Link>
                 ))}
-                
-
             </ListContainer>
-
         </PageContainer>
     )
 }
