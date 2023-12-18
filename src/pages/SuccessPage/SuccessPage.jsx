@@ -1,37 +1,48 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default function SuccessPage({ buyerInfo }) {
+function MovieSession({ movie, date, hour }) {
+    return (
+        <TextContainer>
+            <strong><p>Filme e sessão</p></strong>
+            <p>{movie}</p>
+            <p>{date} - {hour}</p>
+        </TextContainer>
+    );
+}
 
+function SeatsInfo({ seats }) {
+    return (
+        <TextContainer>
+            <strong><p>Ingressos</p></strong>
+            {seats.map((s, index) => (
+                <p key={index}>
+                    Assento {s}
+                </p>
+            ))}
+        </TextContainer>
+    );
+}
+
+function ClientInfo({ buyer, cpf }) {
+    return (
+        <TextContainer>
+            <strong><p>Comprador</p></strong>
+            <p>Nome: {buyer}</p>
+            <p>CPF: {cpf}</p>
+        </TextContainer>
+    );
+}
+
+export default function SuccessPage({ buyerInfo }) {
     const { movie, date, hour, buyer, cpf, seats } = buyerInfo;
 
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
-            <div data-test="movie-info">
-            <TextContainer>
-                <strong><p>Filme e sessão</p></strong>
-                <p>{movie}</p>
-                <p>{date} - {hour}</p>
-            </TextContainer>
-            </div>
-            <div data-test="seats-info">
-                <TextContainer >
-                    <strong><p>Ingressos</p></strong>
-                    {seats.map((s) => {
-                        <p key={seats.id}>
-                            Assento {s}
-                        </p>
-                    })}
-                </TextContainer>
-            </div>
-            <div data-test="client-info">
-                <TextContainer>
-                    <strong><p>Comprador</p></strong>
-                    <p>Nome: {buyer}</p>
-                    <p>CPF: {cpf}</p>
-                </TextContainer>
-            </div>
+            <MovieSession movie={movie} date={date} hour={hour} />
+            <SeatsInfo seats={seats} />
+            <ClientInfo buyer={buyer} cpf={cpf} />
             <Link to="/">
                 <button data-test="go-home-btn">Voltar para Home</button>
             </Link>
@@ -67,6 +78,7 @@ const PageContainer = styled.div`
         color: #247A6B;
     }
 `
+
 const TextContainer = styled.div`
     width: 100%;
     display: flex;

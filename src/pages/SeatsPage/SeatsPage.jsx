@@ -7,6 +7,21 @@ import { useParams } from "react-router-dom";
 import SeatCaption from "./SeatCaption";
 import BuyerForm from "./BuyerForm";
 
+function SeatsContainer({ seats, selectSeat, selectedSeats }) {
+    return (
+        <StyledSeatsContainer>
+            {seats.map((seat) => (
+                <Seat 
+                    seat={seat} 
+                    key={seat.id}
+                    selectSeat={() => selectSeat(seat)}
+                    isSelected={selectedSeats.some((s) => s.id === seat.id)}
+                />
+            ))}
+        </StyledSeatsContainer>
+    );
+}
+
 export default function SeatsPage({ setBuyerInfo }) {
     const apiKey = import.meta.env.VITE_API_KEY;
     const { idSessao } = useParams();
@@ -41,17 +56,11 @@ export default function SeatsPage({ setBuyerInfo }) {
     return (
         <PageContainer>
             Selecione o(s) assento(s)
-            <SeatsContainer>
-                {session.seats.map((seat) => (
-                    <Seat 
-                        seat={seat} 
-                        key={seat.id}
-                        selectSeat={() => selectSeat(seat)}
-                        isSelected={selectedSeats.some((s) => s.id === seat.id)}
-                    />
-                ))}
-                
-            </SeatsContainer>
+            <SeatsContainer 
+                seats={session.seats}
+                selectSeat={selectSeat}
+                selectedSeats={selectedSeats}
+            />
             <SeatCaption />
             <BuyerForm 
                 selectedSeats={selectedSeats}
@@ -80,7 +89,8 @@ const PageContainer = styled.div`
     padding-bottom: 120px;
     padding-top: 70px;
 `
-const SeatsContainer = styled.div`
+
+const StyledSeatsContainer = styled.div`
     width: 330px;
     display: flex;
     flex-direction: row;
