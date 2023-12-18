@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import Footer from "../../components/Footer";

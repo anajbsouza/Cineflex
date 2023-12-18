@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import SessionCard from "../../components/SessionCard";
@@ -43,25 +44,5 @@ const PageContainer = styled.div`
     padding-top: 70px;
     div {
         margin-top: 20px;
-    }
-`
-const SessionContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-family: 'Roboto';
-    font-size: 20px;
-    color: #293845;
-    padding: 0 20px;
-`
-const ButtonsContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin: 20px 0;
-    button {
-        margin-right: 20px;
-    }
-    a {
-        text-decoration: none;
     }
 `
