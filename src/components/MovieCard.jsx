@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 
-export default function MovieCard({ filmes }) {
-    const { posterURL, title, id } = filmes;
+export default function MovieCard({ movies }) {
+    const { posterURL, title, id } = movies;
     return (
         <MovieContainer key={id}>
             <img src={posterURL} alt={title} data-test="movie" />

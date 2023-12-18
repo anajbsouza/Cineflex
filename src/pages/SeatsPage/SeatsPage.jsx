@@ -9,13 +9,13 @@ import BuyerForm from "./BuyerForm";
 
 export default function SeatsPage({ setBuyerInfo }) {
     const apiKey = import.meta.env.VITE_API_KEY;
-    const { idSession } = useParams();
+    const { idSessao } = useParams();
 
     const [session, setSession] = useState(undefined);
     const [selectedSeats, setSelectedSeats] = useState([]);
 
     useEffect(() => {
-        axios.get(`${apiKey}/showtimes/${idSession}/seats`)
+        axios.get(`${apiKey}/showtimes/${idSessao}/seats`)
         .then(result => setSession(result.data))
         .catch((err) => console.log(err.response.data))
     }, []);
@@ -41,7 +41,6 @@ export default function SeatsPage({ setBuyerInfo }) {
     return (
         <PageContainer>
             Selecione o(s) assento(s)
-
             <SeatsContainer>
                 {session.seats.map((seat) => (
                     <Seat 
@@ -53,22 +52,18 @@ export default function SeatsPage({ setBuyerInfo }) {
                 ))}
                 
             </SeatsContainer>
-
             <SeatCaption />
-
             <BuyerForm 
                 selectedSeats={selectedSeats}
                 setBuyerInfo={setBuyerInfo}
                 session={session}
             />
-
             <Footer 
                 posterURL={session.movie.posterURL} 
                 title={session.movie.title}
                 weekday={session.day.weekday}
                 hour={session.name}
             />
-
         </PageContainer>
     )
 }

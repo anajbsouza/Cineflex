@@ -25,10 +25,8 @@ export default function BuyerForm({ selectedSeats, setBuyerInfo, session }) {
 
     function buyTicket(e) {
         e.preventDefault();
-        
         const ids = selectedSeats.map((s) => s.id);
         const body = {...form, ids};
-
         axios.post(`${apiKey}/seats/book-many`, body)
             .then(result => {
                 const info = {

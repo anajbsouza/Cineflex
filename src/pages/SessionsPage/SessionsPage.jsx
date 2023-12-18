@@ -7,11 +7,11 @@ import Footer from "../../components/Footer";
 
 export default function SessionsPage() {
     const apiKey = import.meta.env.VITE_API_KEY;
-    const { idMovie } = useParams();
+    const { idFilme } = useParams();
     const [movies, setMovies] = useState(undefined);
 
     useEffect(() => {
-        axios.get(`${apiKey}/movies/${idMovie}/showtimes`)
+        axios.get(`${apiKey}/movies/${idFilme}/showtimes`)
         .then(result => setMovies(result.data))
         .catch((err) => console.log(err.response.data))
     }, []);

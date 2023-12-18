@@ -8,7 +8,6 @@ export default function SuccessPage({ buyerInfo }) {
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
-
             <div data-test="movie-info">
             <TextContainer>
                 <strong><p>Filme e sessão</p></strong>
@@ -16,7 +15,6 @@ export default function SuccessPage({ buyerInfo }) {
                 <p>{date} - {hour}</p>
             </TextContainer>
             </div>
-            
             <div data-test="seats-info">
                 <TextContainer >
                     <strong><p>Ingressos</p></strong>
@@ -27,7 +25,6 @@ export default function SuccessPage({ buyerInfo }) {
                     })}
                 </TextContainer>
             </div>
-            
             <div data-test="client-info">
                 <TextContainer>
                     <strong><p>Comprador</p></strong>
@@ -35,7 +32,6 @@ export default function SuccessPage({ buyerInfo }) {
                     <p>CPF: {cpf}</p>
                 </TextContainer>
             </div>
-
             <Link to="/">
                 <button data-test="go-home-btn">Voltar para Home</button>
             </Link>
