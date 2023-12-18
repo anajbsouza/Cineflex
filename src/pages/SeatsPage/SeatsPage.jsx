@@ -42,16 +42,15 @@ export default function SeatsPage({ setBuyerInfo }) {
     function selectSeat(seat) {
         if (!seat.isAvailable) {
             alert("Esse assento não está disponível");
-        } else {
-            const isSelected = selectedSeats.some((s) => s.id === seat.id);
-            if (isSelected) {
-                const newSeatsList = selectedSeats.filter((s) => s.id !== seat.id);
-                setSelectedSeats(newSeatsList);
-            } else {
-                setSelectedSeats([...selectedSeats, seat]);
-            }
+            return;
         }
+        const isSelected = selectedSeats.some((s) => s.id === seat.id);
+        const newSeatsList = isSelected
+            ? selectedSeats.filter((s) => s.id !== seat.id)
+            : [...selectedSeats, seat];
+        setSelectedSeats(newSeatsList);
     }
+    
 
     return (
         <PageContainer>
