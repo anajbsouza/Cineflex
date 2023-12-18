@@ -3,7 +3,7 @@
 Este projeto é uma aplicação de front-end que tem como objetivo simular a compra de ingressos de um cinema.
 
 # Demo
-[]()
+[https://cineflex-fawn-beta.vercel.app]()
 
 # Como funciona?
 
